@@ -1,4 +1,4 @@
-<div class="mt-4 flex flex-col">
+<div class="mt-4 flex flex-col" *ngIf="visibleColumns.length > 0">
   <div>
     <button
       (click)="showNextColumns()"
@@ -32,3 +32,6 @@
     </tbody>
   </table>
 </div>
+<p *ngIf="visibleColumns.length === 0" class="font-bold text-lg mt-8">
+  Currently no Datapoints
+</p>
