@@ -1,21 +1,41 @@
-<div class="container mt-4">
-  <table>
+<div class="mt-4 flex flex-col">
+  <table class="min-w-[800px] divide-y divide-gray-200 table-fixed">
     <thead>
-      <tr>
-        <th>MSTID</th>
-        <th>Match</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Nationality</th>
+      <tr class="bg-gray-50">
+        <th
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        >
+          MSTID
+        </th>
+        <th
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        >
+          Match
+        </th>
+        <th
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        >
+          First Name
+        </th>
+        <th
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        >
+          Last Name
+        </th>
+        <th
+          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        >
+          Nationality
+        </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="bg-white divide-y divide-gray-200 overflow-y-auto">
       <tr *ngFor="let item of data">
-        <td>{{ item.MSTID }}</td>
-        <td>{{ item.Match }}</td>
-        <td>{{ item.First }}</td>
-        <td>{{ item.Last }}</td>
-        <td>{{ item.Nationality }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ item.MSTID }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ item.Match }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ item.First }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ item.Last }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">{{ item.Nationality }}</td>
       </tr>
     </tbody>
   </table>
