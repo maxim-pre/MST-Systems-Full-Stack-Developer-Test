@@ -8,10 +8,11 @@ import { SocketService } from '../services/socket.service';
 })
 export class DataTableComponent {
   constructor(private socketService: SocketService) {}
+  data: any[] = [];
 
   ngOnInit() {
     this.socketService.onDataUpdate().subscribe((data: any) => {
-      console.log(data);
+      this.data.push(data);
     });
   }
 }

@@ -1,1 +1,22 @@
-<p>data-table works!</p>
+<div class="container mt-4">
+  <table>
+    <thead>
+      <tr>
+        <th>MSTID</th>
+        <th>Match</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Nationality</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.MSTID }}</td>
+        <td>{{ item.Match }}</td>
+        <td>{{ item.First }}</td>
+        <td>{{ item.Last }}</td>
+        <td>{{ item.Nationality }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
