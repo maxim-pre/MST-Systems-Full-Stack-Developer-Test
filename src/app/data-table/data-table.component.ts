@@ -31,6 +31,18 @@ export class DataTableComponent {
     console.log(this.sortColumn.key);
   }
 
+  showNextColumns() {
+    let currentIndex = this.page * this.pageSize;
+    const keys = Object.keys(this.data[0]);
+    if (currentIndex >= keys.length) {
+      currentIndex = 0;
+      this.page = 0;
+    }
+    const nextColumns = keys.slice(currentIndex, currentIndex + this.pageSize);
+    this.page += 1;
+    this.visibleColumns = nextColumns;
+  }
+
   ngOnInit() {
     this.socketService.onDataUpdate().subscribe((data: any) => {
       if (this.visibleColumns.length === 0) {
