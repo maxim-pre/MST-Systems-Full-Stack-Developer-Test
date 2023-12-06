@@ -11,6 +11,9 @@ import { sortColumn } from '../sortColumn';
 export class DataTableComponent {
   data: any[] = [];
   sortColumn: sortColumn = { key: 'MSTID', asc: true };
+  page: number = 1;
+  pageSize: number = 6;
+  visibleColumns: string[] = [];
 
   constructor(
     private socketService: SocketService,
@@ -25,11 +28,20 @@ export class DataTableComponent {
     }
 
     this.data = this.sortingService.sortData(this.data, this.sortColumn);
+    console.log(this.sortColumn.key);
   }
 
   ngOnInit() {
     this.socketService.onDataUpdate().subscribe((data: any) => {
+      if (this.visibleColumns.length === 0) {
+        this.visibleColumns = Object.keys(data).slice(0, this.pageSize);
+      }
+
       this.data.push(data);
+
+      if (this.data.length >= 11) {
+        this.data.shift();
+      }
     });
   }
 }

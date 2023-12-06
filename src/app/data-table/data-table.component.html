@@ -1,42 +1,26 @@
 <div class="mt-4 flex flex-col">
+  <div></div>
   <table class="min-w-[800px] divide-y divide-gray-200 table-fixed">
     <thead>
       <tr class="bg-gray-50">
         <th
+          *ngFor="let column of visibleColumns"
           class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+          [ngClass]="{ 'text-black': sortColumn.key === column }"
+          (click)="onSort(column)"
         >
-          MSTID
-        </th>
-        <th
-          (click)="onSort('Match')"
-          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-        >
-          Match
-        </th>
-        <th
-          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-        >
-          First Name
-        </th>
-        <th
-          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-        >
-          Last Name
-        </th>
-        <th
-          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-        >
-          Nationality
+          {{ column }}
         </th>
       </tr>
     </thead>
     <tbody class="bg-white divide-y divide-gray-200 overflow-y-auto">
-      <tr *ngFor="let item of data">
-        <td class="px-6 py-4 whitespace-nowrap">{{ item.MSTID }}</td>
-        <td class="px-6 py-4 whitespace-nowrap">{{ item.Match }}</td>
-        <td class="px-6 py-4 whitespace-nowrap">{{ item.First }}</td>
-        <td class="px-6 py-4 whitespace-nowrap">{{ item.Last }}</td>
-        <td class="px-6 py-4 whitespace-nowrap">{{ item.Nationality }}</td>
+      <tr *ngFor="let row of data">
+        <td
+          *ngFor="let column of visibleColumns"
+          class="px-6 py-4 whitespace-nowrap"
+        >
+          {{ row[column] }}
+        </td>
       </tr>
     </tbody>
   </table>
